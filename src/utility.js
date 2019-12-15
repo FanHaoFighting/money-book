@@ -46,7 +46,7 @@ export const isValidDate = (dateString) => {
 }
 
 /**
- * 使用reduce将数据结构中的数组展开
+ * 使用reduce数组转化为用id为key的json对象
  * @param {}} arr 
  */
 export const flatternArr = (arr) => {
