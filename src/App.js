@@ -33,6 +33,7 @@ class App extends Component {
         const results = await Promise.all([axios.get('/categories'), axios.get(getURLWithData)])
         const [ categories, items ] = results
         this.setState({
+          // 此处将后台发送来的数组items转化为json格式
           items: flatternArr(items.data),
           categories: flatternArr(categories.data),
           isLoading: false,
@@ -59,7 +60,7 @@ class App extends Component {
           promiseArr.push(axios.get(getURLWithID))
         }
         const [ fetchedCategories , editItem ] = await Promise.all(promiseArr)
-        // 得到该状态下的category
+        // 得到该状态下的category, categories由数组形格式变为json格式
         const finalCategories = fetchedCategories ? flatternArr(fetchedCategories.data) : categories
         // 得到所编辑的item
         const finalItem = editItem ? editItem.data : items[id]
