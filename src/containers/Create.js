@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
-import CategorySelect from "../components/CategorySelect";
+// import CategorySelect from "../components/CategorySelect";
 import { Tabs, Tab } from "../components/Tabs";
-import PriceForm from "../components/PriceForm";
+// import PriceForm from "../components/PriceForm";
 import Loader from "../components/Loader";
 import { TYPE_INCOME, TYPE_OUTCOME } from "../utility";
 import withContext from "../WithContext";
@@ -111,6 +111,7 @@ export class CreatePage extends React.Component {
           <Tab>支出</Tab>
           <Tab>收入</Tab>
         </Tabs>
+        // todo
       </div>
     )
   }
