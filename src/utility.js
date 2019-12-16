@@ -12,7 +12,11 @@ export const padLeft = (n) => {
   return n < 10 ? '0' + n : n
 }
 
-
+/**
+ * 为日期和月份设定范围
+ * @param {} size 
+ * @param {*} startAt 
+ */
 export const range = (size, startAt = 0) => {
   const arr = []
   for(let i = 0; i < size; i++) {
