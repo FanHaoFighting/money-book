@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
-// import CategorySelect from "../components/CategorySelect";
+import CategorySelect from "../components/CategorySelect";
 import { Tabs, Tab } from "../components/Tabs";
-// import PriceForm from "../components/PriceForm";
+import PriceForm from "../components/PriceForm";
 import Loader from "../components/Loader";
 import { TYPE_INCOME, TYPE_OUTCOME } from "../utility";
 import withContext from "../WithContext";
@@ -102,18 +102,32 @@ export class CreatePage extends React.Component {
       .map(id => categories[id]);
     const tabIndex = tabsText.findIndex(text => text === selectedTab);
     return (
-      <div className="create-page py-3 px-3 rounded mt-3" style={{background: '#fff'}}>
-        // 加载中渲染Loader组件
-        { data.isLoading &&
-          <Loader />
-        }
+      <div
+        className="create-page py-3 px-3 rounded mt-3"
+        style={{ background: "#fff" }}
+      >
+        {data.isLoading && <Loader />}
         <Tabs activeIndex={tabIndex} onTabChange={this.tabChange}>
           <Tab>支出</Tab>
           <Tab>收入</Tab>
         </Tabs>
-        // todo
+        <CategorySelect
+          categories={filterCategories}
+          onSelectCategory={this.selectCategory}
+          selectedCategory={selectedCategory}
+        />
+        <PriceForm
+          onFormSubmit={this.submitForm}
+          onCancelSubmit={this.cancelSubmit}
+          item={editItem}
+        />
+        {!validationPassed && (
+          <div className="alert alert-danger mt-5" role="alert">
+            请选择分类信息
+          </div>
+        )}
       </div>
-    )
+    );
   }
 }
 

@@ -54,16 +54,16 @@ class MonthPicker extends React.Component {
       <div className="dropdown month-picker-component" ref={(ref) => {this.node = ref}}>
         <p>选择月份</p>
         <button
-          className="btn btn-lg btn-secondary dropdown-toggle"
+          className="btn btn-secondary dropdown-toggle"
           onClick={this.toggleDropdown}
         ></button>
         { isOpen && 
           <div className="dropdown-menu" style={{display: 'block'}}>
-            <div className="row">
+            <div className="row" style={{width: '260px'}}>
               <div className="col border-right years-range">
                 { yearRange.map((yearNumber, index) => 
                   <a key={index}
-                    role="button"
+                    
                     onClick={(event) => {this.selectYear(event, yearNumber)}} 
                     className={(yearNumber === selectedYear) ? "dropdown-item active text-white" : "dropdown-item"}>
                     {yearNumber} 年
@@ -73,7 +73,7 @@ class MonthPicker extends React.Component {
               <div className="col months-range">
               { monthRange.map((monthNumber, index) => 
                   <a key={index}
-                    role="button"
+                
                     onClick={(event) => {this.selectMonth(event, monthNumber)}}
                     className={(monthNumber === month) ? "dropdown-item active text-white": "dropdown-item"}>
                     {padLeft(monthNumber)} 月
